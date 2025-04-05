@@ -46,8 +46,8 @@ function allRecords(tabla) {
             ta.descripcion AS tipoAcceso, 
             ra.fechaHora 
             FROM ${tabla} ra 
-            JOIN users u on ra.idUsuario = u.idUsuario 
-            JOIN tipoacceso ta on ra.idTipoAcceso = ta.idTipoAcceso 
+            LEFT JOIN users u on ra.idUsuario = u.idUsuario 
+            LEFT JOIN tipoacceso ta on ra.idTipoAcceso = ta.idTipoAcceso 
             ORDER BY ra.fechaHora DESC`, (error, result) => {
             return error ? reject(error) : resolve(result);
         });

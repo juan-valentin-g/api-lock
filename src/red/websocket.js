@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
 
 let wsClient = null;
+let mensaje = {};
 
 const initWebSocket = (server) => {
     const wss = new WebSocket.Server({ server });
@@ -11,6 +12,9 @@ const initWebSocket = (server) => {
 
         ws.on("message", (message) => {
             console.log("Mensaje recibido de ESP32: ", message.toString());
+            mensaje = message.toString();
+            console.log(mensaje);
+
         });
 
         ws.on("close", () => {
